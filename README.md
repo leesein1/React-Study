@@ -10,19 +10,58 @@
 
 ```text
 REACT-STUDY/
-├── src/                    # 소스 코드 루트 디렉토리
-│   ├── components/         # 공통 UI 컴포넌트 폴더
-│   │   ├── Movie.js        # 영화 카드/아이템을 렌더링하는 컴포넌트
-│   │   └── Movie.module.css # Movie 컴포넌트 전용 CSS 모듈
-│   ├── routes/             # 라우팅용 페이지 단위 컴포넌트
-│   │   ├── Home.js         # `/` 또는 `/home` 경로에서 보여줄 메인 페이지
-│   │   └── Detail.js       # `/movie`-> Detail.js로 연동하는 등 상세 페이지
-│   ├── App.js              # 메인 라우터 및 전체 페이지 구성
-│   ├── App_coin.js         # 추가 실습 또는 페이지 (코인 관련)
-│   ├── App_todo.js         # 추가 실습 또는 페이지 (To Do 리스트)
-│   └── index.js            # React 앱의 진입점 (ReactDOM.render)
-├── .gitignore              
-├── package.json            
-├── package-lock.json       
-└── README.md               
+├── src/                          
+│   ├── components/               # 공통 UI 컴포넌트 폴더
+│   │   ├── Movie.js              # 영화 카드 컴포넌트 (제목, 평점 등 렌더링)
+│   │   └── Movie.module.css      # Movie 전용 스타일 모듈
+│   ├── hooks/                    # 커스텀 훅 실습용 페이지 모음
+│   │   ├── App_useInput.js       # useInput: input 상태를 쉽게 관리
+│   │   ├── App_useTabs.js        # useTabs: 탭 전환 로직 구현
+│   │   ├── App_useTitle.js       # useTitle: 문서 타이틀 동적 변경
+│   │   ├── App_useClick.js       # useClick: 특정 DOM 클릭 감지
+│   │   ├── App_useHover.js       # useHover: 마우스 hover 상태 감지
+│   │   ├── App_useConfirm.js     # useConfirm: confirm 창 실행 로직
+│   │   ├── App_usePreventLeave.js# usePreventLeave: 새로고침/이탈 방지
+│   │   ├── App_useBeforeLeave.js # useBeforeLeave: 마우스 화면 이탈 감지
+│   │   ├── App_useFadeIn.js      # useFadeIn: 요소 fade-in 애니메이션
+│   │   ├── App_useNetwork.js     # useNetwork: 네트워크 상태 감지
+│   │   ├── App_useScroll.js      # useScroll: 스크롤 위치 기반 이벤트
+│   │   ├── App_useFullScreen.js  # useFullScreen: 특정 요소 전체화면 전환
+│   │   ├── App_useNoti.js        # useNotification: 브라우저 알림 API
+│   │   ├── App_useAxios.js       # useAxios: axios 기반 커스텀 데이터 패칭
+│   │   └── useAxios.js           # useAxios 훅 로직 정의 (trigger 기반 재호출 포함)
+│   ├── routes/                   
+│   │   ├── Home.js               # 메인 페이지: YTS API 영화 목록 출력
+│   │   └── Detail.js             # 영화 상세 페이지: route param 활용
+│   ├── App.js                    # 전체 라우팅 정의 및 각 훅 페이지 연결
+│   ├── App_coin.js               # Coin Tracker 실습 (useEffect + API)
+│   ├── App_todo.js               # To Do List 실습 (useState 기본 활용)
+│   └── index.js                  # React 진입점 (ReactDOM.createRoot)
+├── .gitignore                    # Git 추적 제외 파일 설정
+├── package.json                  # 프로젝트 의존성 및 스크립트
+├── package-lock.json             # 정확한 의존성 버전 기록
+└── README.md                     # 이 파일. 프로젝트 설명 문서  
+```
+
+### 추가 공부 사항
+> 개인적으로 Hook을 좀 더 공부하고 여러가지를 만들어 볼 예정이다.  
+> 로그인.. 같은 기능
+
+---
+
+### 리액트 정석 사용
+
+```text
+[사용자 진입]
+   ↓
+<App.js>
+   ↓
+<Route path="/profile" element={<ProfilePage />} />
+   ↓
+<ProfilePage />  (components)
+   ┣━ useUser()             🔁  (hooks)
+   ┃    ┗━ axios 호출
+   ┃    ┗━ 로딩/에러 상태 관리
+   ┣━ formatUserName()      🧮  (utils)
+   ┗━ JSX로 결과 출력
 ```
